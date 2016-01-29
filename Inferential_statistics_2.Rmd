@@ -9,7 +9,7 @@ output: html_document
 
 Now in the second portion of the class, we're going to analyze the ToothGrowth data in the R datasets package.
 
-## Data load, exploration ans summary
+## Data load, exploration and summary
 _Points 1 and 2._
 
 ``` {r}
@@ -30,7 +30,7 @@ with(ToothGrowth, coplot(len ~ dose | supp))
 
 The plot shows the response in the length of odontoblasts (cells responsible for tooth growth) in 60 guinea pigs. Each animal received one of three dose levels of vitamin C (0.5, 1, and 2 mg/day) by one of two delivery methods, (orange juice or ascorbic acid (a form of vitamin C and coded as VC).
 
-## Confidence inyervals/hypothesis tests.
+## Confidence intervals/hypothesis tests.
 _Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there's other approaches worth considering)._
 
 Vitamin C delivery methods affect the tooth length of the guinea pigs?
@@ -44,4 +44,17 @@ with(ToothGrowth, t.test(len[supp=="OJ"], len[supp=="VC"], paired = FALSE, var.e
 
 P-value of this test is 0.06. It could be interpreted as a lack of evidence to reject the null hypothesis. We cannot assume that the vitamin delivery method affect the tooth length.
 
-Same t test for the tooth length of the group with vitamin C dosage.
+Same t test for the tooth length of the group with vitamin C dosage. 
+
+```{r}
+with(ToothGrowth, t.test(len[dose==2], len[dose==1], paired = FALSE, var.equal = TRUE))
+```
+
+We can reject the null hypothesis. As consequence, we can assume that the means of dosage change from 1mg to 2mg creates an positive effect on tooth length.
+
+## Conclusions 
+_State your conclusions and the assumptions needed for your conclusions._
+
+I suppose that Guinea pigs were randomly assigned to random treatments. Hence, the tests used a methodology adapt to indipendent samples.
+
+The method of supplement has appearently a limitate effect on tooth growth. More relevant is the increase of the dosage, which leads to an increased tooth growth.
