@@ -1,0 +1,18 @@
+{
+    "contents" : "---\ntitle: \"Inferential Statistics - Course Project part 2\"\nauthor: \"Maurizio Murino\"\ndate: \"29 January 2016\"\noutput: html_document\n---\n\n## Introduction\n\nNow in the second portion of the class, we're going to analyze the ToothGrowth data in the R datasets package.\n\n## Data load, exploration ans summary\n_Points 1 and 2._\n\n``` {r}\n\"datasets\" %in% row.names(installed.packages())\nlibrary(datasets)\ndata(\"ToothGrowth\")\ndim(ToothGrowth)\nclass(ToothGrowth)\nstr(ToothGrowth)\nsummary(ToothGrowth)\n```\n\nWe got a 60 rows dataset for three variables: \"Tooth length\", \"Supplement lenght\", \"Dose in milligrams per day\".\n\n```{r}\nwith(ToothGrowth, coplot(len ~ dose | supp))\n```\n\nThe plot shows the response in the length of odontoblasts (cells responsible for tooth growth) in 60 guinea pigs. Each animal received one of three dose levels of vitamin C (0.5, 1, and 2 mg/day) by one of two delivery methods, (orange juice or ascorbic acid (a form of vitamin C and coded as VC).\n\n## Confidence inyervals/hypothesis tests.\n_Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there's other approaches worth considering)._\n\nVitamin C delivery methods affect the tooth length of the guinea pigs?\nH0: true difference in means is equal to zero.\n\n### t-test\n\n```{r}\nwith(ToothGrowth, t.test(len[supp==\"OJ\"], len[supp==\"VC\"], paired = FALSE, var.equal = FALSE))\n```\n\nP-value of this test is 0.06. It could be interpreted as a lack of evidence to reject the null hypothesis. We cannot assume that the vitamin delivery method affect the tooth length.\n\nSame t test for the tooth length of the group with vitamin C dosage.",
+    "created" : 1454097854192.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3171210341",
+    "id" : "9B451D80",
+    "lastKnownWriteTime" : 1454097881,
+    "path" : "C:/Users/MaurizioLocale/OneDrive/Data_Science/6 Inferential_statistics/Inferential_statistics_2/Inferential_statistics_2.Rmd",
+    "project_path" : "Inferential_statistics_2.Rmd",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "type" : "r_markdown"
+}
